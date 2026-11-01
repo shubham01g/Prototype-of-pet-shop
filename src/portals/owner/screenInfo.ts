@@ -1,0 +1,40 @@
+type Info = { en: { title: string; body: string }; de: { title: string; body: string }; points?: { en: string; de: string }[] }
+
+const i = (enT: string, enB: string, deT: string, deB: string, points?: [string, string][]): Info => ({
+  en: { title: enT, body: enB }, de: { title: deT, body: deB }, points: points?.map(([en, de]) => ({ en, de })),
+})
+
+export const SCREEN_INFO: Record<string, Info> = {
+  onboarding: i('Onboarding & secure login', 'A warm first-run: value carousel, language choice, sign-up with Apple / Google / e-mail and explicit GDPR consent before any data is stored.',
+    'Onboarding & sicherer Login', 'Ein freundlicher Einstieg: Nutzen-Karussell, Sprachwahl, Registrierung mit Apple / Google / E-Mail und ausdrückliche DSGVO-Einwilligung vor jeder Speicherung.',
+    [['Sign in with Apple is required by the App Store when social login is offered', 'Sign in with Apple ist im App Store Pflicht, wenn Social Login angeboten wird'], ['Consent is versioned and logged', 'Einwilligungen werden versioniert und protokolliert']]),
+  home: i('Home: today at a glance', 'The owner sees what matters now: the pet’s health score, what is due soon, the next appointment and a care streak that brings them back every week.',
+    'Start: der Tag auf einen Blick', 'Halter sehen, was jetzt wichtig ist: Gesundheits-Score, Fälliges, nächster Termin und eine Pflege-Serie, die jede Woche zurückholt.',
+    [['Tap a due item to mark it done. The next date is calculated from the repeat interval', 'Fälliges antippen und erledigen. Das nächste Datum wird automatisch berechnet'], ['Switch pets at the top. Several pets per account', 'Oben zwischen Tieren wechseln. Mehrere Tiere pro Konto']]),
+  pets: i('All pets', 'Every pet in the household with species, breed, age and status at a glance.', 'Alle Tiere', 'Alle Tiere des Haushalts mit Tierart, Rasse, Alter und Status auf einen Blick.'),
+  pet: i('Pet profile & health record', 'Species, breed, birth date, weight and chip number, plus vaccinations, worming, flea & tick and medication, each with a due date, repeat and its own reminder switch.',
+    'Tierprofil & Gesundheitsakte', 'Tierart, Rasse, Geburtsdatum, Gewicht und Chipnummer, dazu Impfungen, Entwurmung, Floh & Zecke und Medikamente, jeweils mit Fälligkeit, Wiederholung und eigenem Schalter.',
+    [['Documents tab: upload a real photo or PDF', 'Tab Dokumente: echtes Foto oder PDF hochladen'], ['Weight tab: trend chart and quick logging', 'Tab Gewicht: Verlauf und schnelles Eintragen']]),
+  addPet: i('Add a pet', 'Quick, friendly form with species picker. Only the name is required, so owners finish in under 30 seconds.', 'Tier hinzufügen', 'Schnelles, freundliches Formular mit Tierart-Auswahl. Nur der Name ist Pflicht, fertig in unter 30 Sekunden.'),
+  book: i('Clinic search', 'Map and list with distance, opening hours and “open now”. 24/7 emergency clinics are flagged. Clinics not on Vetly yet are still shown, so the directory feels complete from day one.',
+    'Praxissuche', 'Karte und Liste mit Entfernung, Öffnungszeiten und „jetzt geöffnet“. 24/7-Notdienste sind markiert. Praxen ohne Vetly werden trotzdem gezeigt, damit das Verzeichnis ab Tag 1 vollständig wirkt.'),
+  clinic: i('Clinic profile', 'Hours, services with durations and prices, vets and spoken languages, with one tap to book, message or call.', 'Praxisprofil', 'Öffnungszeiten, Leistungen mit Dauer und Preis, Tierärzt:innen und Sprachen, mit einem Tipp buchen, schreiben oder anrufen.'),
+  booking: i('Booking flow', 'Pet → service → day & slot → note → send. The request lands in the clinic dashboard in real time, and the confirmation comes back as a push notification.',
+    'Buchungsablauf', 'Tier → Leistung → Tag & Uhrzeit → Notiz → senden. Die Anfrage landet in Echtzeit im Praxis-Dashboard, und die Bestätigung kommt als Push zurück.',
+    [['Try it: send a request, then accept it in the Clinic dashboard', 'Ausprobieren: Anfrage senden, dann im Praxis-Dashboard annehmen']]),
+  chat: i('Messages', 'One thread per topic with each clinic, so conversations stay organised.', 'Nachrichten', 'Ein Verlauf pro Thema mit jeder Praxis, damit alles übersichtlich bleibt.'),
+  thread: i('Clinic chat', 'Photos and PDFs as attachments, read receipts and push. A permanent banner makes clear: this chat is not for emergencies.',
+    'Praxis-Chat', 'Fotos und PDFs als Anhang, Lesebestätigungen und Push. Ein dauerhafter Hinweis stellt klar: Dieser Chat ist nicht für Notfälle.'),
+  newThread: i('New conversation', 'Choose clinic, pet and topic. Topics help clinics triage and route messages to the right person.', 'Neue Unterhaltung', 'Praxis, Tier und Thema wählen. Themen helfen der Praxis, Nachrichten richtig zuzuordnen.'),
+  profile: i('Profile & settings', 'Language, appearance, reminders, appointments, privacy center and the built-in legal texts.', 'Profil & Einstellungen', 'Sprache, Darstellung, Erinnerungen, Termine, Datenschutz-Center und die integrierten Rechtstexte.'),
+  notifications: i('Notification center', 'Every reminder, booking update and clinic message in one timeline.', 'Benachrichtigungen', 'Alle Erinnerungen, Buchungs-Updates und Praxis-Nachrichten in einer Timeline.'),
+  passport: i('Pet passport & sharing', 'A beautiful digital pet ID with QR code. Owners can share the record with a new vet: they choose what to share and for how long.',
+    'Tierpass & Freigabe', 'Ein schöner digitaler Tierausweis mit QR-Code. Halter teilen die Akte mit einer neuen Praxis und bestimmen Umfang und Dauer.'),
+  privacy: i('Privacy & consent center', 'Owners control which clinic or insurer may see which pet, export all their data as a file and delete their account (GDPR Art. 15, 17, 20).',
+    'Datenschutz-Center', 'Halter steuern, welche Praxis oder Versicherung welches Tier sehen darf, exportieren alle Daten als Datei und löschen ihr Konto (DSGVO Art. 15, 17, 20).',
+    [['Try it: revoke Praxis Lehmann for Bruno, then open the Clinic → Patients', 'Ausprobieren: Freigabe für Bruno widerrufen, dann Praxis → Patienten öffnen'], ['“Export my data” downloads a real JSON file', '„Daten exportieren“ lädt eine echte JSON-Datei herunter']]),
+  reminders: i('Reminder settings', 'Global channels, quiet hours and a weekly summary, plus a switch for every single reminder.', 'Erinnerungs-Einstellungen', 'Globale Kanäle, Ruhezeiten und Wochenübersicht, dazu ein Schalter für jede einzelne Erinnerung.'),
+  appointments: i('Appointments', 'Upcoming and past visits with status. Owners respond to a clinic’s proposed new time right here.', 'Termine', 'Kommende und vergangene Termine mit Status. Vorschläge der Praxis direkt hier annehmen oder ablehnen.'),
+  legal: i('Built-in legal texts', 'Impressum, privacy policy and terms are part of the app (required in Germany), maintained as structured text for easy lawyer review.', 'Integrierte Rechtstexte', 'Impressum, Datenschutzerklärung und AGB sind Teil der App (in Deutschland Pflicht), als strukturierte Texte für die anwaltliche Prüfung.'),
+  account: i('Account', 'Personal data, secure login methods and connected devices.', 'Konto', 'Persönliche Daten, sichere Login-Methoden und verbundene Geräte.'),
+}

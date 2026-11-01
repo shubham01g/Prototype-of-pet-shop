@@ -1,0 +1,90 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/fraunces';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --c-canvas: 251 248 243;
+    --c-surface: 255 255 255;
+    --c-muted: 244 239 231;
+    --c-line: 233 226 214;
+    --c-ink: 24 36 33;
+    --c-ink-2: 88 103 98;
+    --c-ink-3: 138 150 145;
+    --c-brand: 15 92 85;
+    --c-brand-strong: 10 68 63;
+    --c-brand-soft: 226 240 235;
+    --c-brand-fg: 255 255 255;
+    --c-coral: 238 112 84;
+    --c-coral-soft: 253 233 226;
+    --c-sun: 222 154 30;
+    --c-sun-soft: 253 243 220;
+    --c-berry: 214 69 91;
+    --c-berry-soft: 252 230 233;
+    --c-sky: 72 128 230;
+    --c-sky-soft: 228 237 253;
+    --c-sage: 98 150 120;
+    --c-sage-soft: 229 241 233;
+    --c-plum: 132 92 196;
+    --c-plum-soft: 239 233 250;
+    color-scheme: light;
+  }
+  .dark {
+    --c-canvas: 12 19 17;
+    --c-surface: 20 30 27;
+    --c-muted: 28 40 36;
+    --c-line: 38 52 48;
+    --c-ink: 236 242 239;
+    --c-ink-2: 160 176 170;
+    --c-ink-3: 112 128 122;
+    --c-brand: 62 184 166;
+    --c-brand-strong: 98 206 190;
+    --c-brand-soft: 22 52 48;
+    --c-brand-fg: 8 28 25;
+    --c-coral: 245 133 107;
+    --c-coral-soft: 58 34 29;
+    --c-sun: 240 184 72;
+    --c-sun-soft: 54 43 20;
+    --c-berry: 240 104 124;
+    --c-berry-soft: 60 26 32;
+    --c-sky: 120 162 245;
+    --c-sky-soft: 26 38 64;
+    --c-sage: 130 190 155;
+    --c-sage-soft: 26 46 36;
+    --c-plum: 170 135 230;
+    --c-plum-soft: 42 32 62;
+    color-scheme: dark;
+  }
+  html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body { @apply bg-canvas text-ink font-sans; font-feature-settings: 'cv11', 'ss01'; }
+  h1, h2, h3, .font-display { font-optical-sizing: auto; }
+  ::selection { background: rgb(var(--c-brand) / 0.18); }
+  * { scrollbar-width: thin; scrollbar-color: rgb(var(--c-line)) transparent; }
+  *::-webkit-scrollbar { width: 8px; height: 8px; }
+  *::-webkit-scrollbar-thumb { background: rgb(var(--c-line)); border-radius: 8px; }
+  button { -webkit-tap-highlight-color: transparent; }
+}
+
+@layer components {
+  .card { @apply bg-surface rounded-2xl border border-line/70 shadow-soft; }
+  .glass { @apply bg-surface/70 backdrop-blur-xl border border-white/40 dark:border-white/5; }
+  .input {
+    @apply w-full rounded-xl border border-line bg-surface px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-3
+      outline-none transition focus:border-brand focus:shadow-glow;
+  }
+  .label { @apply mb-1.5 block text-xs font-medium text-ink-2; }
+  .eyebrow { @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-3; }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .bg-grain {
+    background-image: radial-gradient(rgb(var(--c-ink) / 0.035) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, rgb(var(--c-brand)) 10%, rgb(var(--c-sage)) 50%, rgb(var(--c-coral)) 95%);
+  }
+}
