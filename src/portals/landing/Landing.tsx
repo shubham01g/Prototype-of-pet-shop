@@ -24,6 +24,7 @@ export default function Landing() {
             <a href="#features" className="rounded-lg px-3 py-1.5 hover:bg-muted hover:text-ink">{t('Features', 'Funktionen')}</a>
             <a href="#trust" className="rounded-lg px-3 py-1.5 hover:bg-muted hover:text-ink">{t('Privacy', 'Datenschutz')}</a>
             <Link to="/proposal" className="rounded-lg px-3 py-1.5 hover:bg-muted hover:text-ink">{t('Proposal', 'Angebot')}</Link>
+            <Link to="/pricing" className="rounded-lg px-3 py-1.5 hover:bg-muted hover:text-ink">{t('Pricing', 'Preise')}</Link>
           </nav>
           <div className="ml-auto flex items-center gap-2">
             <LangToggle />

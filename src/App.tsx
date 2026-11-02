@@ -12,6 +12,7 @@ const Admin = lazy(() => import('@/portals/admin/Admin'))
 const Insurer = lazy(() => import('@/portals/insurer/Insurer'))
 const LiveDemo = lazy(() => import('@/portals/landing/LiveDemo'))
 const Proposal = lazy(() => import('@/portals/proposal/Proposal'))
+const Pricing = lazy(() => import('@/portals/proposal/Pricing'))
 const Legal = lazy(() => import('@/portals/legal/Legal'))
 
 function Loader() {
@@ -51,6 +52,7 @@ export default function App() {
           <Route path="/insurer/*" element={<Insurer />} />
           <Route path="/live" element={<LiveDemo />} />
           <Route path="/proposal" element={<Proposal />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/legal/:doc?" element={<Legal />} />
           <Route path="*" element={<Landing />} />
         </Routes>

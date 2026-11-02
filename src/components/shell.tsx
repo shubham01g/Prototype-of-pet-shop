@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import {
-  Bell, Building2, ChevronDown, Command, FileText, LayoutGrid, Menu, Moon, PanelsTopLeft, Search, ShieldCheck, Smartphone, Sun, Umbrella, X,
+  Bell, Building2, ChevronDown, Coins, Command, FileText, LayoutGrid, Menu, Moon, PanelsTopLeft, Search, ShieldCheck, Smartphone, Sun, Umbrella, X,
 } from 'lucide-react'
 import React, { useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -80,6 +80,7 @@ export const PORTALS = [
   { to: '/insurer', icon: Umbrella, en: 'Insurer portal', de: 'Versicherer-Portal', hue: 270 },
   { to: '/live', icon: PanelsTopLeft, en: 'Live side-by-side', de: 'Live nebeneinander', hue: 40 },
   { to: '/proposal', icon: FileText, en: 'Proposal', de: 'Angebot', hue: 120 },
+  { to: '/pricing', icon: Coins, en: 'Pricing', de: 'Preise', hue: 30 },
 ]
 
 export function PortalSwitcher({ current }: { current: string }) {

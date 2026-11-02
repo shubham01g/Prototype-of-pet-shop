@@ -13,17 +13,16 @@ import { cn } from '@/lib/utils'
 /* ------------------------------------------------------------------ editable plan data
    Adjust weeks here before sending. Everything on the page is derived from these arrays. */
 const PHASE1 = [
-  { id: 'M0', weeks: [1, 1], en: 'Discovery & design sign-off', de: 'Discovery & Design-Freigabe', items: { en: ['Final screens from this prototype', 'Data model & access rules', 'Accounts set up in your name'], de: ['Finale Screens auf Basis dieses Prototyps', 'Datenmodell & Zugriffsregeln', 'Accounts auf Ihren Namen angelegt'] } },
-  { id: 'M1', weeks: [2, 6], en: 'Core app → first test build', de: 'Kern-App → erster Test-Build', items: { en: ['Login (Apple, Google, magic link)', 'Pets, health records, repeat logic', 'Push reminders with per-item switch', 'Documents (photo/PDF), DE/EN', 'TestFlight + Play internal test build ✓'], de: ['Login (Apple, Google, Magic Link)', 'Tiere, Gesundheitsakte, Wiederholungen', 'Push-Erinnerungen mit Einzelschalter', 'Dokumente (Foto/PDF), DE/EN', 'TestFlight + Play-Testbuild ✓'] }, highlight: true },
-  { id: 'M2', weeks: [7, 10], en: 'Clinics, booking & chat', de: 'Praxen, Buchung & Chat', items: { en: ['Clinic search with distance & hours', 'Booking request → confirmation push', 'Chat with attachments + emergency notice', 'Lite clinic inbox (web) to answer requests'], de: ['Praxissuche mit Entfernung & Zeiten', 'Buchungsanfrage → Bestätigungs-Push', 'Chat mit Anhängen + Notfall-Hinweis', 'Schlanke Praxis-Inbox (Web) zur Beantwortung'] } },
-  { id: 'M3', weeks: [11, 12], en: 'GDPR, security & store launch', de: 'DSGVO, Sicherheit & Store-Launch', items: { en: ['Consent flows, export, delete my data', 'Legal texts built in (lawyer-ready)', 'Security review & fixes', 'App Store & Play submission'], de: ['Einwilligungen, Export, Daten löschen', 'Rechtstexte integriert (anwaltsfertig)', 'Sicherheitsprüfung & Fixes', 'App-Store- & Play-Einreichung'] } },
+  { id: 'M1', weeks: [1, 1], en: 'Design sign-off & foundations', de: 'Design-Freigabe & Fundament', items: { en: ['Final screens from this prototype', 'Data model & access rules', 'Login (Apple, Google, magic link)', 'DE/EN and light/dark mode built in', 'Accounts set up in your name'], de: ['Finale Screens auf Basis dieses Prototyps', 'Datenmodell & Zugriffsregeln', 'Login (Apple, Google, Magic Link)', 'DE/EN sowie Hell-/Dunkelmodus integriert', 'Accounts auf Ihren Namen angelegt'] } },
+  { id: 'M2', weeks: [2, 2], en: 'Pets, records & reminders', de: 'Tiere, Akte & Erinnerungen', items: { en: ['Pets, health records, repeat logic', 'Push reminders with per-item switch', 'Documents (photo/PDF)', 'TestFlight + Play internal test build ✓'], de: ['Tiere, Gesundheitsakte, Wiederholungen', 'Push-Erinnerungen mit Einzelschalter', 'Dokumente (Foto/PDF)', 'TestFlight + Play-Testbuild ✓'] }, highlight: true },
+  { id: 'M3', weeks: [3, 3], en: 'Clinic search, booking & chat', de: 'Praxissuche, Buchung & Chat', items: { en: ['Clinic search with distance & hours', 'Booking request → confirmation push', 'Chat with attachments + emergency notice', 'Pet passport with QR sharing'], de: ['Praxissuche mit Entfernung & Zeiten', 'Buchungsanfrage → Bestätigungs-Push', 'Chat mit Anhängen + Notfall-Hinweis', 'Tierpass mit QR-Freigabe'] } },
 ]
 const PHASE2 = [
-  { id: 'M4', weeks: [13, 16], en: 'Full clinic dashboard', de: 'Vollständiges Praxis-Dashboard', items: { en: ['Hours & services', 'Accept / change bookings, calendar', 'Consented patient records', 'Clinic → owner reminders'], de: ['Zeiten & Leistungen', 'Buchungen annehmen / ändern, Kalender', 'Freigegebene Patientenakten', 'Erinnerungen Praxis → Halter'] } },
-  { id: 'M5', weeks: [17, 19], en: 'Sharing, admin & first PMS link', de: 'Freigaben, Admin & erste PVS-Anbindung', items: { en: ['Share record with a new vet', 'Admin console', 'Provet Cloud API + universal iCal/CSV sync'], de: ['Akte mit neuer Praxis teilen', 'Admin-Konsole', 'Provet-Cloud-API + Universal-iCal/CSV-Sync'] } },
-  { id: 'M6', weeks: [20, 22], en: 'Insurance-ready & launch', de: 'Versicherungs-ready & Launch', items: { en: ['Insurer onboarding & partner API', 'Scoped, expiring consents + webhooks', 'Pen-test, handover documentation'], de: ['Versicherer-Onboarding & Partner-API', 'Begrenzte, ablaufende Freigaben + Webhooks', 'Pentest, Übergabe-Dokumentation'] } },
+  { id: 'M4', weeks: [4, 4], en: 'Clinic dashboard', de: 'Praxis-Dashboard', items: { en: ['Hours & services', 'Accept / change bookings, calendar', 'Consented patient records', 'Clinic → owner reminders & chat'], de: ['Zeiten & Leistungen', 'Buchungen annehmen / ändern, Kalender', 'Freigegebene Patientenakten', 'Erinnerungen & Chat Praxis → Halter'] } },
+  { id: 'M5', weeks: [5, 5], en: 'Admin console & insurer portal', de: 'Admin-Konsole & Versicherer-Portal', items: { en: ['Admin: users, clinics, plans, revenue, audit log', 'Insurer onboarding & partner API', 'Scoped, expiring consents + webhooks', 'Provet Cloud API + universal iCal/CSV sync'], de: ['Admin: Nutzer, Praxen, Tarife, Umsatz, Audit-Log', 'Versicherer-Onboarding & Partner-API', 'Begrenzte, ablaufende Freigaben + Webhooks', 'Provet-Cloud-API + Universal-iCal/CSV-Sync'] } },
+  { id: 'M6', weeks: [6, 6], en: 'GDPR, security & store launch', de: 'DSGVO, Sicherheit & Store-Launch', items: { en: ['Consent flows, export, delete my data', 'Legal texts built in (lawyer-ready)', 'Security review & fixes', 'App Store & Play submission, handover docs'], de: ['Einwilligungen, Export, Daten löschen', 'Rechtstexte integriert (anwaltsfertig)', 'Sicherheitsprüfung & Fixes', 'App-Store- & Play-Einreichung, Übergabe-Doku'] } },
 ]
-const TOTAL_WEEKS = 22
+const TOTAL_WEEKS = 6
 
 const fade = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-60px' }, transition: { duration: 0.5 } }
 
@@ -39,7 +38,7 @@ export default function Proposal() {
       <header className="sticky top-0 z-40 border-b border-line/50 bg-canvas/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6">
           <Link to="/"><Logo size={28} sub={t('Proposal', 'Angebot')} /></Link>
-          <div className="ml-auto flex items-center gap-2"><LangToggle /><ThemeToggle /><Link to="/app" className="hidden sm:block"><Button size="sm" variant="outline">{t('Open prototype', 'Prototyp öffnen')}</Button></Link></div>
+          <div className="ml-auto flex items-center gap-2"><LangToggle /><ThemeToggle /><Link to="/pricing"><Button size="sm" variant="secondary">{t('Pricing', 'Preise')}</Button></Link><Link to="/app" className="hidden sm:block"><Button size="sm" variant="outline">{t('Open prototype', 'Prototyp öffnen')}</Button></Link></div>
         </div>
       </header>
 
@@ -49,11 +48,11 @@ export default function Proposal() {
         <div className="relative mx-auto max-w-7xl px-4 pb-12 pt-16 sm:px-6">
           <Badge tone="brand" dot>{t('Proposal · November 2026', 'Angebot · November 2026')}</Badge>
           <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">{t('How we’d build Vetly, and make it better.', 'Wie wir Vetly bauen würden, und besser machen.')}</h1>
-          <p className="mt-5 max-w-2xl text-lg text-ink-2">{t('Your brief, answered point by point: recommended stack, architecture, two phased milestones with timelines, our honest suggestions, the risks we see and how owners keep coming back.', 'Ihr Briefing, Punkt für Punkt beantwortet: empfohlener Stack, Architektur, zwei Phasen mit Zeitplan, ehrliche Vorschläge, die Risiken, die wir sehen, und wie Halter wiederkommen.')}</p>
+          <p className="mt-5 max-w-2xl text-lg text-ink-2">{t('Your brief, answered point by point: recommended stack, architecture, six weekly milestones to a finished product in 6 weeks, our honest suggestions, the risks we see and how owners keep coming back.', 'Ihr Briefing, Punkt für Punkt beantwortet: empfohlener Stack, Architektur, sechs wöchentliche Meilensteine bis zum fertigen Produkt in 6 Wochen, ehrliche Vorschläge, die Risiken, die wir sehen, und wie Halter wiederkommen.')}</p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               [Smartphone, t('One codebase', 'Eine Codebasis'), 'iOS + Android'],
-              [Rocket, t('First test build', 'Erster Test-Build'), t('after week 6', 'nach Woche 6')],
+              [Rocket, t('Finished product', 'Fertiges Produkt'), t('in 6 weeks', 'in 6 Wochen')],
               [ServerCog, t('Hosting', 'Hosting'), t('EU · Frankfurt', 'EU · Frankfurt')],
               [KeyRound, t('Ownership', 'Eigentum'), t('100% yours: code & accounts', '100 % Ihres: Code & Accounts')],
             ].map(([I, l, v]) => {
@@ -105,7 +104,7 @@ export default function Proposal() {
                 <div className="mt-3 flex flex-wrap gap-2">
                   {['owners', 'households', 'pets', 'health_entries', 'documents', 'clinics', 'services', 'opening_hours', 'bookings', 'threads', 'messages', 'consents', 'notifications', 'audit_log', 'insurers', 'api_clients'].map((x) => <code key={x} className="rounded-lg bg-muted px-2 py-1 font-mono text-xs">{x}</code>)}
                 </div>
-                <p className="mt-4 text-sm text-ink-2">{t('consents = (pet, party, scope[], expires_at). The same table powers clinic access, “share with a new vet” and insurers, so one model covers Phase 1, Phase 2 and insurance.', 'consents = (Tier, Partner, Umfang[], Ablauf). Dieselbe Tabelle steuert Praxiszugriff, „mit neuer Praxis teilen“ und Versicherer: ein Modell für Phase 1, Phase 2 und Versicherung.')}</p>
+                <p className="mt-4 text-sm text-ink-2">{t('consents = (pet, party, scope[], expires_at). The same table powers clinic access, “share with a new vet” and insurers, so one model covers the app, the clinics and insurance.', 'consents = (Tier, Partner, Umfang[], Ablauf). Dieselbe Tabelle steuert Praxiszugriff, „mit neuer Praxis teilen“ und Versicherer: ein Modell für App, Praxen und Versicherung.')}</p>
               </motion.div>
               <motion.div {...fade} className="card overflow-hidden">
                 <div className="border-b border-line px-5 py-3 text-sm font-semibold">{t('Access rule, enforced in Postgres', 'Zugriffsregel, in Postgres durchgesetzt')}</div>
@@ -126,13 +125,13 @@ on health_entries for select using (
           </Section>
 
           {/* --------------------------------------------------------- milestones */}
-          <Section id="milestones" n="03" title={t('Milestones & timeline', 'Meilensteine & Zeitplan')} sub={t('Estimate for a focused team of 2–3 (lead developer + designer/QA), to be confirmed after discovery. Each milestone ends with a demo and a build you can test.', 'Schätzung für ein fokussiertes Team von 2–3 Personen (Lead-Entwicklung + Design/QA), Bestätigung nach Discovery. Jeder Meilenstein endet mit Demo und testbarem Build.')}>
+          <Section id="milestones" n="03" title={t('Milestones & timeline', 'Meilensteine & Zeitplan')} sub={t('Six milestones, one per week: your finished product (owner app, clinic dashboard, admin console and insurer portal) in 6 weeks. Every week ends with a demo and a build you can test.', 'Sechs Meilensteine, einer pro Woche: Ihr fertiges Produkt (Halter-App, Praxis-Dashboard, Admin-Konsole und Versicherer-Portal) in 6 Wochen. Jede Woche endet mit Demo und testbarem Build.')}>
             <motion.div {...fade} className="card overflow-x-auto p-6">
               <div className="min-w-[760px]">
                 <div className="mb-2 grid gap-1 pl-[220px]" style={{ gridTemplateColumns: `repeat(${TOTAL_WEEKS}, 1fr)` }}>
                   {Array.from({ length: TOTAL_WEEKS }, (_, i) => <div key={i} className="text-center text-[10px] text-ink-3">{i + 1}</div>)}
                 </div>
-                {[{ label: t('Phase 1: Owner app', 'Phase 1: Halter-App'), items: PHASE1, tone: 'brand' }, { label: t('Phase 2: Clinic & extras', 'Phase 2: Praxis & Extras'), items: PHASE2, tone: 'plum' }].map((ph) => (
+                {[{ label: t('Weeks 1–3: Owner app', 'Wochen 1–3: Halter-App'), items: PHASE1, tone: 'brand' }, { label: t('Weeks 4–6: Clinic, admin & insurer', 'Wochen 4–6: Praxis, Admin & Versicherer'), items: PHASE2, tone: 'plum' }].map((ph) => (
                   <div key={ph.label} className="mb-4">
                     <div className="mb-2 text-xs font-bold uppercase tracking-wider text-ink-3">{ph.label}</div>
                     {ph.items.map((m) => (
@@ -149,10 +148,10 @@ on health_entries for select using (
                 ))}
               </div>
             </motion.div>
-            <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {[...PHASE1, ...PHASE2].map((m) => (
                 <motion.div {...fade} key={m.id} className={cn('card p-5', 'highlight' in m && !!m.highlight && 'ring-2 ring-coral')}>
-                  <div className="flex items-center justify-between"><Badge tone={PHASE1.includes(m) ? 'brand' : 'plum'}>{m.id}</Badge><span className="text-xs text-ink-3">{t(`Weeks ${m.weeks[0]}–${m.weeks[1]}`, `Wochen ${m.weeks[0]}–${m.weeks[1]}`)}</span></div>
+                  <div className="flex items-center justify-between"><Badge tone={PHASE1.includes(m) ? 'brand' : 'plum'}>{m.id}</Badge><span className="text-xs text-ink-3">{t(`Week ${m.weeks[0]}`, `Woche ${m.weeks[0]}`)}</span></div>
                   <div className="mt-3 font-semibold">{lang === 'de' ? m.de : m.en}</div>
                   <ul className="mt-2 space-y-1.5">{m.items[lang].map((x) => <li key={x} className="flex gap-2 text-[13px] text-ink-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-ink-3" />{x}</li>)}</ul>
                 </motion.div>
@@ -164,7 +163,7 @@ on health_entries for select using (
           <Section id="changes" n="04" title={t('What we’d add, cut or change', 'Was wir ergänzen, streichen oder ändern würden')} sub={t('To launch faster without losing what makes the product valuable.', 'Um schneller zu starten, ohne den Kernnutzen zu verlieren.')}>
             <div className="grid gap-4 lg:grid-cols-3">
               <ListCard icon={Plus} tone="sage" title={t('Add', 'Ergänzen')} items={[
-                [t('A lite clinic inbox in Phase 1', 'Schlanke Praxis-Inbox in Phase 1'), t('Booking requests need someone to answer them. Without it, Phase 1 bookings dead-end.', 'Buchungsanfragen brauchen jemanden, der antwortet. Ohne sie laufen Phase-1-Buchungen ins Leere.')],
+                [t('Clinic dashboard in the same release', 'Praxis-Dashboard im selben Release'), t('Booking requests need someone to answer them, so the owner app and clinic dashboard launch together.', 'Buchungsanfragen brauchen jemanden, der antwortet. Daher starten Halter-App und Praxis-Dashboard gemeinsam.')],
                 [t('Household sharing', 'Haushalt teilen'), t('Partners and family manage the same pets. A top request in pet apps.', 'Partner:innen und Familie verwalten dieselben Tiere. Häufig gewünscht in Tier-Apps.')],
                 [t('Admin console (this prototype)', 'Admin-Konsole (dieser Prototyp)'), t('Users, clinics, plans, revenue, GDPR requests and audit log in one place.', 'Nutzer, Praxen, Tarife, Umsatz, DSGVO-Anfragen und Audit-Log an einem Ort.')],
                 [t('Pet passport with QR', 'Tierpass mit QR'), t('Instant, consent-based sharing with a new vet, sitter or boarding kennel.', 'Sofortiges, einwilligungsbasiertes Teilen mit neuer Praxis, Sitter oder Pension.')],
@@ -268,9 +267,10 @@ on health_entries for select using (
             <div className="absolute -bottom-24 left-20 h-60 w-60 rounded-full bg-coral/40 blur-3xl" />
             <div className="relative">
               <h2 className="font-display text-4xl font-semibold leading-tight">{t('Next step: a 30-minute call.', 'Nächster Schritt: ein 30-minütiges Gespräch.')}</h2>
-              <p className="mt-3 max-w-xl text-canvas/70">{t('We walk through this prototype together, adjust the scope to your priorities and lock the Phase 1 plan.', 'Wir gehen den Prototyp gemeinsam durch, passen den Umfang an Ihre Prioritäten an und fixieren den Phase-1-Plan.')}</p>
+              <p className="mt-3 max-w-xl text-canvas/70">{t('We walk through this prototype together, adjust the scope to your priorities and lock the 6-week plan.', 'Wir gehen den Prototyp gemeinsam durch, passen den Umfang an Ihre Prioritäten an und fixieren den 6-Wochen-Plan.')}</p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <Link to="/live"><Button size="lg" className="!bg-canvas !text-ink" iconRight={<ArrowRight size={17} />}>{t('See the live demo', 'Live-Demo ansehen')}</Button></Link>
+                <Link to="/pricing"><Button size="lg" className="!bg-canvas !text-ink" iconRight={<ArrowRight size={17} />}>{t('See pricing & earning potential', 'Preise & Umsatzpotenzial')}</Button></Link>
+                <Link to="/live"><Button size="lg" variant="outline" className="!border-white/20 !bg-transparent !text-canvas">{t('See the live demo', 'Live-Demo ansehen')}</Button></Link>
                 <Link to="/app"><Button size="lg" variant="outline" className="!border-white/20 !bg-transparent !text-canvas">{t('Open the owner app', 'Halter-App öffnen')}</Button></Link>
               </div>
             </div>
